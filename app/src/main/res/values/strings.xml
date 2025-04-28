@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">NumberSlidePuzzle</string>
+    <string name="app_name">9Pazzle</string>
+    <string name="clearText">クリア！おめでとう！</string>
+    <string name="resetBtn">リセット</string>
+    <string name="image_cell11">セル1</string>
+    <string name="image_cell12">セル2</string>
+    <string name="image_cell13">セル3</string>
+    <string name="image_cell21">セル4</string>
+    <string name="image_cell22">セル5</string>
+    <string name="image_cell23">セル6</string>
+    <string name="image_cell31">セル7</string>
+    <string name="image_cell32">セル8</string>
+    <string name="image_cell33">セル9</string>
 </resources>
