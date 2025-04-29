@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val images = listOf(R.drawable.space, R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5, R.drawable.no6, R.drawable.no7, R.drawable.no8)
-    private var cellNumbers = MutableList(9) { 0 }          // 各セルに配置されている数字
-    private var movableCells = MutableList(9) { false }     // 動かせるセルかどうか
+    private var cellNumbers = MutableList(9) { 0 }               // 各セルに配置されている数字
+    private var movableCells = MutableList(9) { false }          // 動かせるセルかどうか
     private var spaceCellIndex = 0                               // スペースセルの位置
     private var isGameClear = false                              // ゲームクリア
 
@@ -37,15 +37,12 @@ class MainActivity : AppCompatActivity() {
         resetCells()
 
         // ボタン押下処理
-        binding.cell11.setOnClickListener{ moveCell(0) }
-        binding.cell12.setOnClickListener{ moveCell(1) }
-        binding.cell13.setOnClickListener{ moveCell(2) }
-        binding.cell21.setOnClickListener{ moveCell(3) }
-        binding.cell22.setOnClickListener{ moveCell(4) }
-        binding.cell23.setOnClickListener{ moveCell(5) }
-        binding.cell31.setOnClickListener{ moveCell(6) }
-        binding.cell32.setOnClickListener{ moveCell(7) }
-        binding.cell33.setOnClickListener{ moveCell(8) }
+        val cellViews = listOf(
+            binding.cell11, binding.cell12, binding.cell13, binding.cell21, binding.cell22, binding.cell23, binding.cell31, binding.cell32, binding.cell33
+        )
+        cellViews.forEachIndexed { index, cell ->
+            cell.setOnClickListener { moveCell(index) }
+        }
 
         // リセットボタン
         binding.resetBtn.setOnClickListener{
@@ -68,13 +65,10 @@ class MainActivity : AppCompatActivity() {
                 val temp = cellNumbers[i]
                 cellNumbers[i] = cellNumbers[j]
                 cellNumbers[j] = temp
-                Log.d(
-                    "reset",
-                    "swapCount=$swapCount\n" +
-                            "i=$i,   cellNumbers[i]=$cellNumbers[i]\n" +
-                            "j=$j,   cellNumbers[j]=$cellNumbers[j]\n" +
-                            "cellNumbers=$cellNumbers"
-                )
+                Log.d("reset", "swapCount=$swapCount\n" +
+                            "i=$i, cellNumbers[i]=$cellNumbers[i]\n" +
+                            "j=$j, cellNumbers[j]=$cellNumbers[j]\n" +
+                            "cellNumbers=$cellNumbers")
                 swapCount += 1
             }
         }
@@ -119,14 +113,11 @@ class MainActivity : AppCompatActivity() {
         movableCells = movableCellsList[spaceCellIndex]
 
         // 画像表示を更新
-        binding.cell11.setImageResource(images[cellNumbers[0]])
-        binding.cell12.setImageResource(images[cellNumbers[1]])
-        binding.cell13.setImageResource(images[cellNumbers[2]])
-        binding.cell21.setImageResource(images[cellNumbers[3]])
-        binding.cell22.setImageResource(images[cellNumbers[4]])
-        binding.cell23.setImageResource(images[cellNumbers[5]])
-        binding.cell31.setImageResource(images[cellNumbers[6]])
-        binding.cell32.setImageResource(images[cellNumbers[7]])
-        binding.cell33.setImageResource(images[cellNumbers[8]])
+        val cellViews = listOf(
+            binding.cell11, binding.cell12, binding.cell13, binding.cell21, binding.cell22, binding.cell23, binding.cell31, binding.cell32, binding.cell33
+        )
+        cellViews.forEachIndexed { index, cell ->
+            cell.setImageResource(images[cellNumbers[index]])
+        }
     }
 }
