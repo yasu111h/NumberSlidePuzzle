@@ -4,18 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.numberslidepuzzle.R
 import com.example.numberslidepuzzle.databinding.ActivityMainBinding
 import kotlin.jvm.java
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity() {
+class PlayActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val images = listOf(R.drawable.space, R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5, R.drawable.no6, R.drawable.no7, R.drawable.no8)
@@ -48,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         // ホームボタン
         binding.backBtn.setOnClickListener{
-            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+            startActivity(Intent(this@PlayActivity, HomeActivity::class.java))
         }
     }
 
