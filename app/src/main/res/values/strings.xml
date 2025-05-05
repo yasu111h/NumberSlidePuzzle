@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">9Pazzle</string>
+    <string name="appTitle">ナンバースライドパズル</string>
     <string name="clearText">クリア！おめでとう！</string>
     <string name="resetBtn">リセット</string>
+    <string name="ninePuzzleBtn">9パズル</string>
+    <string name="backBtn">戻る</string>
     <string name="image_cell11">セル1</string>
     <string name="image_cell12">セル2</string>
     <string name="image_cell13">セル3</string>

@@ -1,5 +1,6 @@
 package com.example.numberslidepuzzle
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.numberslidepuzzle.R
 import com.example.numberslidepuzzle.databinding.ActivityMainBinding
+import kotlin.jvm.java
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -27,11 +29,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         // 盤面初期化
         resetCells()
@@ -47,6 +44,11 @@ class MainActivity : AppCompatActivity() {
         // リセットボタン
         binding.resetBtn.setOnClickListener{
             resetCells()
+        }
+
+        // ホームボタン
+        binding.backBtn.setOnClickListener{
+            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
     }
 
