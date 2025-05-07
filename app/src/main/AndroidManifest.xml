@@ -13,6 +13,9 @@
         android:theme="@style/Theme.NumberSlidePuzzle"
         tools:targetApi="31">
         <activity
+            android:name=".FourxFourPlayActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlayActivity"
             android:exported="false" />
         <activity

@@ -10,7 +10,7 @@ import com.example.numberslidepuzzle.databinding.ActivityPlayBinding
 import kotlin.jvm.java
 import kotlin.random.Random
 
-class PlayActivity : AppCompatActivity() {
+class FourxFourPlayActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayBinding
     private val images = listOf(R.drawable.space, R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5, R.drawable.no6, R.drawable.no7, R.drawable.no8)
@@ -43,7 +43,7 @@ class PlayActivity : AppCompatActivity() {
 
         // ホームボタン
         binding.backBtn.setOnClickListener{
-            startActivity(Intent(this@PlayActivity, HomeActivity::class.java))
+            startActivity(Intent(this@FourxFourPlayActivity, HomeActivity::class.java))
         }
     }
 
@@ -63,9 +63,9 @@ class PlayActivity : AppCompatActivity() {
                 cellNumbers[i] = cellNumbers[j]
                 cellNumbers[j] = temp
                 Log.d("reset", "swapCount=$swapCount\n" +
-                            "i=$i, cellNumbers[i]=$cellNumbers[i]\n" +
-                            "j=$j, cellNumbers[j]=$cellNumbers[j]\n" +
-                            "cellNumbers=$cellNumbers")
+                        "i=$i, cellNumbers[i]=$cellNumbers[i]\n" +
+                        "j=$j, cellNumbers[j]=$cellNumbers[j]\n" +
+                        "cellNumbers=$cellNumbers")
                 swapCount += 1
             }
         }
