@@ -18,9 +18,28 @@ class FourxFourPlayActivity : AppCompatActivity() {
     private val images = listOf(R.drawable.space, R.drawable.no01, R.drawable.no02, R.drawable.no03, R.drawable.no04, R.drawable.no05, R.drawable.no06, R.drawable.no07,
                                 R.drawable.no08, R.drawable.no09,R.drawable.no10, R.drawable.no11, R.drawable.no12, R.drawable.no13, R.drawable.no14, R.drawable.no15)
     private var cellNumbers = MutableList(16) { 0 }               // 各セルに配置されている数字
-    private var movableCells = MutableList(16) { 0 }              // 0: 動かないセル, 1: 動かせるセル (効率化と可読性向上のためBoolean型ではなく0,1を使用)
     private var spaceCellIndex = 0                                // スペースセルの位置
-    private var isGameClear = false                               // ゲームクリア
+    private var isGameClear = false                               // ゲームクリアしたか
+    private var movableCells = MutableList(16) { 0 }              // 0: 動かないセル, 1: 動かせるセル (効率化と可読性向上のためBoolean型ではなく0,1を使用)
+    val movableCellsList = listOf(
+        // 対象セル    11 12 13 14 21 22 23 24 31 32 33 34 41 42 43 44    スペースセルの位置
+        mutableListOf(0, 1, 0, 0, 1, 0, 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //11
+        mutableListOf(1, 0, 1, 0, 0, 1, 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //12
+        mutableListOf(0, 1, 0, 1, 0, 0, 1, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //13
+        mutableListOf(0, 0, 1, 0, 0, 0, 0, 1, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //14
+        mutableListOf(1, 0, 0, 0, 0, 1, 0, 0, 1 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //21
+        mutableListOf(0, 1, 0, 0, 1, 0, 1, 0, 0 ,1 ,0 ,0 ,0 ,0 ,0 ,0),  //22
+        mutableListOf(0, 0, 1, 0, 0, 1, 0, 1, 0 ,0 ,1 ,0 ,0 ,0 ,0 ,0),  //23
+        mutableListOf(0, 0, 0, 1, 0, 0, 1, 0, 0 ,0 ,0 ,1 ,0 ,0 ,0 ,0),  //24
+        mutableListOf(0, 0, 0, 0, 1, 0, 0, 0, 0 ,1 ,0 ,0 ,1 ,0 ,0 ,0),  //31
+        mutableListOf(0, 0, 0, 0, 0, 1, 0, 0, 1 ,0 ,1 ,0 ,0 ,1 ,0 ,0),  //32
+        mutableListOf(0, 0, 0, 0, 0, 0, 1, 0, 0 ,1 ,0 ,1 ,0 ,0 ,1 ,0),  //33
+        mutableListOf(0, 0, 0, 0, 0, 0, 0, 1, 0 ,0 ,1 ,0 ,0 ,0 ,0 ,1),  //34
+        mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 1 ,0 ,0 ,0 ,0 ,1 ,0 ,0),  //41
+        mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,1 ,0 ,0 ,1 ,0 ,1 ,0),  //42
+        mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,1 ,0 ,0 ,1 ,0 ,1),  //43
+        mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0 ,1 ,0 ,0 ,1 ,0),  //44
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,9 +104,9 @@ class FourxFourPlayActivity : AppCompatActivity() {
         if (isGameClear || movableCells[cellIndex] == 0) return
 
         // 選択されたセルとスペースセルを入れ替える
-        val movingNumber = cellNumbers[cellIndex]
+        val tmp = cellNumbers[cellIndex]
         cellNumbers[cellIndex] = 0
-        cellNumbers[spaceCellIndex] = movingNumber
+        cellNumbers[spaceCellIndex] = tmp
         spaceCellIndex = cellIndex
         updateImage()
 
@@ -102,25 +121,6 @@ class FourxFourPlayActivity : AppCompatActivity() {
     private fun updateImage() {
 
         // 移動可能なセルの指定
-        val movableCellsList = listOf(
-            //            11 12 13 14 21 22 23 24 31 32 33 34 41 42 43 44
-            mutableListOf(0, 1, 0, 0, 1, 0, 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //11
-            mutableListOf(1, 0, 1, 0, 0, 1, 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //12
-            mutableListOf(0, 1, 0, 1, 0, 0, 1, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //13
-            mutableListOf(0, 0, 1, 0, 0, 0, 0, 1, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //14
-            mutableListOf(1, 0, 0, 0, 0, 1, 0, 0, 1 ,0 ,0 ,0 ,0 ,0 ,0 ,0),  //21
-            mutableListOf(0, 1, 0, 0, 1, 0, 1, 0, 0 ,1 ,0 ,0 ,0 ,0 ,0 ,0),  //22
-            mutableListOf(0, 0, 1, 0, 0, 1, 0, 1, 0 ,0 ,1 ,0 ,0 ,0 ,0 ,0),  //23
-            mutableListOf(0, 0, 0, 1, 0, 0, 1, 0, 0 ,0 ,0 ,1 ,0 ,0 ,0 ,0),  //24
-            mutableListOf(0, 0, 0, 0, 1, 0, 0, 0, 0 ,1 ,0 ,0 ,1 ,0 ,0 ,0),  //31
-            mutableListOf(0, 0, 0, 0, 0, 1, 0, 0, 1 ,0 ,1 ,0 ,0 ,1 ,0 ,0),  //32
-            mutableListOf(0, 0, 0, 0, 0, 0, 1, 0, 0 ,1 ,0 ,1 ,0 ,0 ,1 ,0),  //33
-            mutableListOf(0, 0, 0, 0, 0, 0, 0, 1, 0 ,0 ,1 ,0 ,0 ,0 ,0 ,1),  //34
-            mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 1 ,0 ,0 ,0 ,0 ,1 ,0 ,0),  //41
-            mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,1 ,0 ,0 ,1 ,0 ,1 ,0),  //42
-            mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,1 ,0 ,0 ,1 ,0 ,1),  //43
-            mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0 ,0 ,0 ,1 ,0 ,0 ,1 ,0),  //44
-        )
         movableCells = movableCellsList[spaceCellIndex]
 
         // 画像表示を更新
