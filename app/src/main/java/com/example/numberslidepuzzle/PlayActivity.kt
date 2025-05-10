@@ -13,7 +13,7 @@ import kotlin.random.Random
 class PlayActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayBinding
-    private val images = listOf(R.drawable.space, R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5, R.drawable.no6, R.drawable.no7, R.drawable.no8)
+    private val images = listOf(R.drawable.space, R.drawable.no01, R.drawable.no02, R.drawable.no03, R.drawable.no04, R.drawable.no05, R.drawable.no06, R.drawable.no07, R.drawable.no08)
     private var cellNumbers = MutableList(9) { 0 }               // 各セルに配置されている数字
     private var movableCells = MutableList(9) { false }          // 動かせるセルかどうか
     private var spaceCellIndex = 0                               // スペースセルの位置

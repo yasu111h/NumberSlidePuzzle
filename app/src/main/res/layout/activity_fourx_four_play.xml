@@ -37,9 +37,7 @@
 
             <ImageButton
                 android:id="@+id/cell11"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -50,22 +48,18 @@
 
             <ImageButton
                 android:id="@+id/cell12"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
+                android:contentDescription="@string/image_cell12"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.499"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@string/image_cell12" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <ImageButton
                 android:id="@+id/cell13"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -73,6 +67,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars"
                 android:contentDescription="@string/image_cell13" />
+            
+            <ImageButton
+                android:id="@+id/cell14"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell14" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,9 +88,7 @@
 
             <ImageButton
                 android:id="@+id/cell21"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -96,9 +99,7 @@
 
             <ImageButton
                 android:id="@+id/cell22"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -109,9 +110,7 @@
 
             <ImageButton
                 android:id="@+id/cell23"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -119,6 +118,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars"
                 android:contentDescription="@string/image_cell23" />
+            
+            <ImageButton
+                android:id="@+id/cell24"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell24" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,9 +139,7 @@
 
             <ImageButton
                 android:id="@+id/cell31"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -142,9 +150,7 @@
 
             <ImageButton
                 android:id="@+id/cell32"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -155,9 +161,7 @@
 
             <ImageButton
                 android:id="@+id/cell33"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
+                style="@style/FourxFourCellStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -165,6 +169,69 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars"
                 android:contentDescription="@string/image_cell33" />
+            
+            <ImageButton
+                android:id="@+id/cell34"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell34" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/cell41"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell41" />
+
+            <ImageButton
+                android:id="@+id/cell42"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell42" />
+
+            <ImageButton
+                android:id="@+id/cell43"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell43" />
+            
+            <ImageButton
+                android:id="@+id/cell44"
+                style="@style/FourxFourCellStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/image_cell44" />
         </LinearLayout>
 
     </LinearLayout>
