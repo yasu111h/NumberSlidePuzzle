@@ -18,5 +18,9 @@ class HomeActivity : AppCompatActivity() {
         binding.nilePuzzleBtn.setOnClickListener{
             startActivity(Intent(this@HomeActivity, PlayActivity::class.java))
         }
+
+        binding.sixteenPuzzleBtn.setOnClickListener{
+            startActivity(Intent(this@HomeActivity, FourxFourPlayActivity::class.java))
+        }
     }
 }

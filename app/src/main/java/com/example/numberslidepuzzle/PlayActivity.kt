@@ -6,23 +6,35 @@ import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.numberslidepuzzle.databinding.ActivityMainBinding
+import com.example.numberslidepuzzle.databinding.ActivityPlayBinding
 import kotlin.jvm.java
 import kotlin.random.Random
 
 class PlayActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val images = listOf(R.drawable.space, R.drawable.no1, R.drawable.no2, R.drawable.no3, R.drawable.no4, R.drawable.no5, R.drawable.no6, R.drawable.no7, R.drawable.no8)
+    private lateinit var binding: ActivityPlayBinding
+    private val images = listOf(R.drawable.space, R.drawable.no01, R.drawable.no02, R.drawable.no03, R.drawable.no04, R.drawable.no05, R.drawable.no06, R.drawable.no07, R.drawable.no08)
     private var cellNumbers = MutableList(9) { 0 }               // 各セルに配置されている数字
-    private var movableCells = MutableList(9) { false }          // 動かせるセルかどうか
     private var spaceCellIndex = 0                               // スペースセルの位置
-    private var isGameClear = false                              // ゲームクリア
+    private var isGameClear = false                              // ゲームクリアしたか
+    private var movableCells = MutableList(9) { 0 }              // 0: 動かないセル, 1: 動かせるセル (効率化と可読性向上のためBoolean型ではなく0,1を使用)
+    val movableCellsList = listOf(
+        // 対象セル    11 12 13 21 22 23 31 32 33    スペースセルの位置
+        mutableListOf(0, 1, 0, 1, 0, 0, 0, 0, 0),   //11
+        mutableListOf(1, 0, 1, 0, 1, 0, 0, 0, 0),   //12
+        mutableListOf(0, 1, 0, 0, 0, 1, 0, 0, 0),   //13
+        mutableListOf(1, 0, 0, 0, 1, 0, 1, 0, 0),   //21
+        mutableListOf(0, 1, 0, 1, 0, 1, 0, 1, 0),   //22
+        mutableListOf(0, 0, 1, 0, 1, 0, 0, 0, 1),   //23
+        mutableListOf(0, 0, 0, 1, 0, 0, 0, 1, 0),   //31
+        mutableListOf(0, 0, 0, 0, 1, 0, 1, 0, 1),   //32
+        mutableListOf(0, 0, 0, 0, 0, 1, 0, 1, 0)    //33
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityPlayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 盤面初期化
@@ -76,12 +88,12 @@ class PlayActivity : AppCompatActivity() {
     // セル移動処理
     private fun moveCell(cellIndex: Int) {
         // ゲームクリア後または移動不可のセル選択時は何もしない
-        if (isGameClear || !movableCells[cellIndex]) return
+        if (isGameClear || movableCells[cellIndex] == 0) return
 
         // 選択されたセルとスペースセルを入れ替える
-        val movingNumber = cellNumbers[cellIndex]
+        val tmp = cellNumbers[cellIndex]
         cellNumbers[cellIndex] = 0
-        cellNumbers[spaceCellIndex] = movingNumber
+        cellNumbers[spaceCellIndex] = tmp
         spaceCellIndex = cellIndex
         updateImage()
 
@@ -96,17 +108,6 @@ class PlayActivity : AppCompatActivity() {
     private fun updateImage() {
 
         // 移動可能なセルの指定
-        val movableCellsList = listOf(
-            mutableListOf(false, true, false, true, false, false, false, false, false),
-            mutableListOf(true, false, true, false, true, false, false, false, false),
-            mutableListOf(false, true, false, false, false, true, false, false, false),
-            mutableListOf(true, false, false, false, true, false, true, false, false),
-            mutableListOf(false, true, false, true, false, true, false, true, false),
-            mutableListOf(false, false, true, false, true, false, false, false, true),
-            mutableListOf(false, false, false, true, false, false, false, true, false),
-            mutableListOf(false, false, false, false, true, false, true, false, true),
-            mutableListOf(false, false, false, false, false, true, false, true, false)
-        )
         movableCells = movableCellsList[spaceCellIndex]
 
         // 画像表示を更新
